@@ -3,8 +3,8 @@ import Homepage from "./Homepage";
 function App() {
   return (
     <div>
-      {/* <Login /> */}
-      {/* <Signup /> */}
+      {/* <Login />
+      <Signup /> */}
       <Homepage />
     </div>
   );
