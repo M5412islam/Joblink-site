@@ -1,11 +1,11 @@
 import React from "react";
-import Login from "./login";
-
+import Homepage from "./Homepage";
 function App() {
   return (
     <div>
-      <Login />
-      {/* <Signup /> */}
+      {/* <Login />
+      <Signup /> */}
+      <Homepage />
     </div>
   );
 }
