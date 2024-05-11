@@ -10,7 +10,7 @@ const Login = () => {
 
   return (
     <div>
-      <form action='/' method='post'>
+      <form action='/user' method='post'>
         {isLogin ? (
           <div className="container">
             <div className="two-thirds">
