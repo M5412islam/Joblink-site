@@ -1,0 +1,55 @@
+[33mcommit b6b0415f5c38e583645f494909d1731023ab054a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mIslamBranch[m[33m, [m[1;31morigin/IslamBranch[m[33m)[m
+Merge: 5e23021 efc1c00
+Author: Muhammad Islam <miso60800@gmail.com>
+Date:   Fri May 10 17:41:50 2024 +0500
+
+    Merge needed to get get latest updates Merge remote-tracking branch 'origin/main' into IslamBranch
+
+[33mcommit 5e230212fc26dd241809e72b6577954c2f26682d[m
+Author: Muhammad Islam <miso60800@gmail.com>
+Date:   Fri May 10 17:06:18 2024 +0500
+
+    made the about page
+
+[33mcommit efc1c00a23721e73ed77c4bd2bb8f623c3a38035[m
+Merge: 01f20f6 0bdee09
+Author: Abdul Rafay <abdulrafay23butt@gmail.com>
+Date:   Thu May 9 12:40:22 2024 +0500
+
+    Merge branch 'main' of https://github.com/M5412islam/Joblink-site
+
+[33mcommit 01f20f666a6ed54e3ab42a8fa1371d703444ac69[m
+Author: Abdul Rafay <abdulrafay23butt@gmail.com>
+Date:   Thu May 9 12:39:48 2024 +0500
+
+    login signup
+
+[33mcommit 0bdee09dd17db9f53ccdac6081b95e2367e37735[m
+Author: Muhammad Islam <miso60800@gmail.com>
+Date:   Mon May 6 23:23:34 2024 +0500
+
+    Completed the Homepage Responsiveness
+
+[33mcommit 1f21630653613c44d9288e43b960ed88ee825d1e[m
+Author: Muhammad Islam <miso60800@gmail.com>
+Date:   Mon May 6 07:22:40 2024 +0500
+
+    Added Homepage
+
+[33mcommit 3505b1ee0c386eb26515eca89a59f15b534b6c2f[m
+Author: Muhammad Islam <miso60800@gmail.com>
+Date:   Tue Apr 30 22:33:50 2024 +0500
+
+     Added login\Signup functionality and updated index.html
+
+[33mcommit af6abf05f38924987fa189f3e18083dfa3d20eac[m
+Author: Muhammad Islam <miso60800@gmail.com>
+Date:   Tue Apr 30 22:07:34 2024 +0500
+
+    Login Signup Page
+
+[33mcommit 6217ed893febf7a561a8fe059412c25705f69c72[m
+Author: Muhammad Islam <miso60800@gmail.com>
+Date:   Tue Apr 30 21:58:29 2024 +0500
+
+    Initialize project using Create React App

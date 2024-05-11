@@ -3,10 +3,11 @@ import About from "./About";
 function App() {
   return (
     <div>
-      {/* <Login /> */}
-      {/* <Signup /> */}
+      {/* <Login />
+      <Signup /> */}
       {/* <Homepage /> */}
        <About/>
+     {/* <Createposte/> */}
     </div>
   );
 }
