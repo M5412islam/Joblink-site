@@ -41,10 +41,12 @@ const CreatePost = () => {
             <div className="inline-options">
                 <input type="radio" id="fullTime" name="jobType" value="full-time" required />
                 <label htmlFor="fullTime">Full-time</label>
-            
+            </div>
+            <div className="inline-options">
                 <input type="radio" id="partTime" name="jobType" value="part-time" />
                 <label htmlFor="partTime">Part-time</label>
-            
+            </div>
+            <div className="inline-options">
                 <input type="radio" id="contract" name="jobType" value="contract" />
                 <label htmlFor="contract">Contract</label>
             </div>
@@ -67,7 +69,8 @@ const CreatePost = () => {
             <div className="inline-options">
                 <input type="radio" id="Masters" name="educationLevel" value="Masters" required />
                 <label htmlFor="highSchool">Masters</label>
-            
+            </div>
+            <div className="inline-options">
                 <input type="radio" id="bachelors" name="educationLevel" value="Bachelor's Degree" />
                 <label htmlFor="bachelors">Bachelor's Degree</label>
             </div>

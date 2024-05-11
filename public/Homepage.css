@@ -52,7 +52,7 @@ body {
   font-weight: bold;
 }
 .blue-button {
-  background-color: #007bff;
+  background-color:#007bff;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -205,6 +205,7 @@ body {
 
 .part2 {
   flex: 1;
+  background-color: #f0f0f0;
   display: flex; 
   background-color: #f0f0f0 ;;
 }
@@ -225,7 +226,7 @@ body {
   height: 120px;
   border: 1px solid black;
   border-radius: 10px;
-  background-color: #f0f0f0;
+  background-color: #007bff;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -23,7 +23,8 @@
 }
 
 .company-info {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 .website-name {
@@ -40,6 +41,7 @@
 .A-navigation ul li {
     display: inline;
     margin-right: 20px;
+    
 }
 
 .A-navigation ul li a {
@@ -48,16 +50,17 @@
 }
 
 .A-navigation ul li a.active {
-    color: blue;
+    color: #007bff;
 }
 
-.contact-info h2 {
-    margin-bottom: 10px;
+
+.right-side .company-info p {
+    margin: 5px 0; /* Adjust margin to reduce space between paragraphs */
+}
+.right-side .company-info h2 {
+    margin-bottom: 2px; /* Adjust margin to reduce space between paragraphs */
 }
 
-.contact-info p {
-    margin: 3px 0; /* Reduced margin between paragraphs */
-}
 
 
 
@@ -124,7 +127,7 @@
 
 .column-heading {
     font-size: 44px;
-    color: blue;
+    color: #007bff;
     font-weight: bold;
     text-align: center; 
     margin: 3px 0; 

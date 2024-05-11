@@ -62,13 +62,13 @@ const About = () => {
           </nav>
         </div>
         <div className="right-side">
-          <div className="contact-info">
-            <h2 ><span className='blue-text'>C</span>ontact</h2>
-            <p><strong>Address:</strong> Street# 2,Johar Town , Lahore ,Pakistan </p>
-            <p><strong>Email:</strong> info@joblink.com</p>
-            <p><strong>Phone:</strong> +1234567890</p>
-          </div>
-        </div>
+    <div className="company-info">
+      <h2><span className='blue-text'>C</span>ontact</h2>
+      <p><strong>Address:</strong> Street# 2, Johar Town, Lahore, Pakistan</p>
+      <p><strong>Email:</strong> info@joblink.com</p>
+      <p><strong>Phone:</strong> +1234567890</p>
+    </div>
+  </div>
       </header>
     </div>
   );
