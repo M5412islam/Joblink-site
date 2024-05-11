@@ -1,6 +1,9 @@
+/* Add this to your existing CreatePost.css or your main CSS file */
+
 .C-Body{
     background-color: #007bff;
 }
+
 .C-header {
     display: flex;
     align-items: center;
@@ -10,52 +13,51 @@
     padding-left: 250px;
     padding-right: 180px;
     background-color: #f0f0f0;
-  }
-  .C-website-name {
+}
+
+.C-website-name {
     font-size: 36px;
     font-weight: bold;
-  }
-  .C-navigation ul {
+}
+
+.C-navigation ul {
     list-style-type: none;
-    margin: 0;
-    
-  }
-  .C-navigation ul li {
+    margin: 0;  
+}
+
+.C-navigation ul li {
     display: inline;
     margin-right: 30px;
-  }
-  
-  .C-navigation ul li a {
+}
+
+.C-navigation ul li a {
     text-decoration: none;
     color: black;
-  }
-  .C-navigation ul li a.active {
+}
+
+.C-navigation ul li a.active {
     color: #007bff;
-  }
+}
 
-  /* Responsive styles for Header */
-  @media only screen and (max-width: 1100px) {
+/* Responsive styles for Header */
+@media only screen and (max-width: 1100px) {
     .C-header {
-      flex-direction: column;
-      padding: 10px;
+        flex-direction: column;
+        padding: 10px;
     }
-  
+
     .C-navigation ul {
-      display: flex; 
-      flex-wrap: wrap; 
-      justify-content: center; 
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: center; 
     }
-  
+
     .C-navigation ul li {
-      margin: 0 10px; 
-    }
-  
-  }
+        margin: 0 10px; 
+    }  
+}
 
-
-  /* Form Styling */
-  /* Add this to your existing CreatePost.css or your main CSS file */
-/* Add this to your existing CreatePost.css or your main CSS file */
+/* Form Styling */
 .form-container {
     max-width: 800px;
     margin: 20px auto;
@@ -69,12 +71,23 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.job-form h2{
+.job-form h2 {
     text-align: center;
 }
 
-.form-group {
+.form-row {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.form-group:last-child {
+    margin-right: 0;
 }
 
 .form-group label {
@@ -94,14 +107,13 @@
     border-radius: 4px;
     margin-top: 5px;
 }
+
 #experienceLevel,
 #applicationDeadline,
 #applicationMethod {
     width: calc(50% - 200px); /* Adjust the width as needed */
 }
 
-/* Add this to your existing CreatePost.css or your main CSS file */
-/* Add this to your existing CreatePost.css or your main CSS file */
 .inline-options input[type="radio"] {
     display: inline;
     margin-top: 10px; /* Adjust the margin as needed */
@@ -113,8 +125,6 @@
     margin-right: 135px; /* Adjust the margin as needed */
     font-weight: normal; /* Decrease font weight */
 }
-
-
 
 .contact-info {
     display: flex;
@@ -139,4 +149,116 @@
 
 .C-button:hover {
     background-color: blue;
+}
+
+
+.form-container {
+    max-width: 1000px; 
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.job-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px; /* Increased space */
+}
+
+.form-group {
+    flex: 1;
+    margin-right: 60px; /* Increased space */
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 20px); /* Adjusted for padding */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+#experienceLevel,
+#applicationDeadline,
+#applicationMethod {
+    width: calc(50% + 130px); /* Adjust the width as needed */
+}
+
+.inline-options input[type="radio"] {
+    display: inline;
+    margin-top: 10px; /* Adjust the margin as needed */
+    font-weight: normal; /* Decrease font weight */
+}
+
+.inline-options label {
+    display: inline;
+    margin-right: 135px; /* Adjust the margin as needed */
+    font-weight: normal; /* Decrease font weight */
+}
+
+.contact-info {
+    display: flex;
+}
+
+.contact-info input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.C-button {
+    display: block;
+    margin: 0 auto; /* Center the button */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.C-button:hover {
+    background-color: blue;
+}
+
+
+
+/* Media query for screens up to 700px */
+@media only screen and (max-width: 800px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        margin-right: 0; 
+        margin-bottom: 20px; /* Add bottom margin for spacing between fields */
+    }
+
+    .inline-options label {
+        margin-right: 0; /* Remove right margin for radio button labels */
+    }
+
+    .contact-info input {
+        margin-right: 0; 
+    }
 }

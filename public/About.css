@@ -5,6 +5,14 @@
 
 
 /* Footer of this Page */
+.A-body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Ensure that the body is a column layout */
+    min-height: 100vh; /* Make sure the body takes at least the height of the viewport */
+}
+
 .A-header {
     display: flex;
     justify-content: space-between;
@@ -12,6 +20,7 @@
     padding-left: 60px;
     padding-top: 0px;
     background-color: #f0f0f0;
+    flex-shrink: 0; /* Prevent the header from shrinking */
 }
 
 .left-side {
@@ -62,14 +71,13 @@
 }
 
 
-
-
 /* Main content of about page */
 .about-content {
     display: flex;
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 40px;
+    flex-grow: 1; /* Allow the main content to grow to fill remaining space */
 }
 
 .about-left, .about-right {
@@ -138,7 +146,6 @@
     text-align: center; 
     margin: 3px 0; 
 }
-
 
 /* Media query for screens up to 600px */
 @media only screen and (max-width: 800px) {
