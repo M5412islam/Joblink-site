@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Signup from './Signup';
 
-const Login = () => {
+const Login = ({setIsLogged}) => {
   const [isLogin, setIsLogin] = useState(true);
+  
   const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
     Username: '',
@@ -19,9 +20,9 @@ const Login = () => {
         body: JSON.stringify(formData)
       });
       const data = await response.json();
-      alert(data.message);
       if(data.message === "Username Found") {
-        window.location.href = '/Homepage'; 
+        setIsLogged(true);
+        window.location.href = '/'; 
       } else {
         setMessage('Incorrect Username or password');
       }

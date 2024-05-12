@@ -7,13 +7,18 @@ import softwareEngineerLogo from './Images-Logos/Software Engineer.png';
 import teacherLogo from './Images-Logos/Teacher.png';
 import webDeveloperLogo from './Images-Logos/Web Developer.png';
 
-const Homepage = () => {
+const Homepage = ({ IsLogged }) => {
   const [showFirstSet, setShowFirstSet] = useState(true);
 
   const toggleCards = () => {
     setShowFirstSet(!showFirstSet);
   };
 
+  const handleCardClick = (card) => {
+    console.log(`Clicked on card with title: ${card.title}`);
+    // Do something with the clicked card, such as navigating to a details page
+  };
+  
   const firstSetData = [
     { id: 1, logo: softwareEngineerLogo, title: 'Software Engineer', description: 'Build amazing software with team management skills' },
     { id: 2, logo: webDeveloperLogo, title: 'Web Developer', description: 'Create stunning websites that are visually appealing' },
@@ -38,15 +43,22 @@ const Homepage = () => {
             <li><Link to="/" className="active">Home</Link></li>
             <li><Link to="/findjobs">Find-Jobs</Link></li>
             <li><Link to="/MyPosts">MyPosts</Link></li>
-            <li><Link to="/Post-Jobs">Post-Jobs</Link></li>
+            <li><Link to="/Create_Post">Post-Jobs</Link></li>
             <li><Link to="/About">About</Link></li>
           </ul>
         </nav>
-        <div className="button-container">
-          <span className='post-job bold-content'>Post a job</span>
-          <Link to="/signup" className="blue-button">Sign up</Link>
-          <Link to="/login" className="blue-button">Log in</Link>
-        </div>
+        {IsLogged ? (
+          <div className="button-container">
+           {/* Add Logout button or any other content for logged-in users */}
+            <button className="blue-button">Logout</button>
+          </div>
+        ) : (
+          <div className="button-container">
+            <Link to="/Signup" className="blue-button">Sign up</Link>
+            <Link to="/login" className="blue-button">Log in</Link>
+          </div>
+        )}
+
       </header>
 
       <div className="main-content">
@@ -74,23 +86,24 @@ const Homepage = () => {
         {/* Part 1: Cards */}
         <div className="part1">
           <div className="card-container">
-            {showFirstSet ? (
-              firstSetData.map((card) => (
-                <div key={card.id} className="card">
-                  <img src={card.logo} alt={card.title} />
-                  <h1>{card.title}</h1>
-                  <p>{card.description}</p>
-                </div>
-              ))
-            ) : (
-              secondSetData.map((card) => (
-                <div key={card.id} className="card">
-                  <img src={card.logo} alt={card.title} />
-                  <h1>{card.title}</h1>
-                  <p>{card.description}</p>
-                </div>
-              ))
-            )}
+          {showFirstSet ? (
+  firstSetData.map((card) => (
+    <div key={card.id} className="card" onClick={() => handleCardClick(card)}>
+      <img src={card.logo} alt={card.title} />
+      <h1>{card.title}</h1>
+      <p>{card.description}</p>
+    </div>
+  ))
+) : (
+  secondSetData.map((card) => (
+    <div key={card.id} className="card" onClick={() => handleCardClick(card)}>
+      <img src={card.logo} alt={card.title} />
+      <h1>{card.title}</h1>
+      <p>{card.description}</p>
+    </div>
+  ))
+)}
+
           </div>
         </div>
         
