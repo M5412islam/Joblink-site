@@ -7,13 +7,15 @@ import softwareEngineerLogo from './Images-Logos/Software Engineer.png';
 import teacherLogo from './Images-Logos/Teacher.png';
 import webDeveloperLogo from './Images-Logos/Web Developer.png';
 
-const Homepage = () => {
+const Homepage = ({ isLogged })=> {
   const [showFirstSet, setShowFirstSet] = useState(true);
-
+  const params = new URLSearchParams(window.location.search);
+  const param1 = params.get('param1');
+  isLogged=param1;
   const toggleCards = () => {
     setShowFirstSet(!showFirstSet);
   };
-
+console.log("logged"+isLogged);
   const firstSetData = [
     { id: 1, logo: softwareEngineerLogo, title: 'Software Engineer', description: 'Build amazing software with team management skills' },
     { id: 2, logo: webDeveloperLogo, title: 'Web Developer', description: 'Create stunning websites that are visually appealing' },
@@ -38,14 +40,23 @@ const Homepage = () => {
             <li><Link to="/" className="active">Home</Link></li>
             <li><Link to="/findjobs">Find-Jobs</Link></li>
             <li><Link to="/MyPosts">MyPosts</Link></li>
-            <li><Link to="/Post-Jobs">Post-Jobs</Link></li>
+            <li><Link to="/Create_Post">Post-Jobs</Link></li>
             <li><Link to="/About">About</Link></li>
           </ul>
         </nav>
         <div className="button-container">
-          <span className='post-job bold-content'>Post a job</span>
-          <Link to="/signup" className="blue-button">Sign up</Link>
+      
+        {isLogged ? (
+          <div className="button-container">
+          <Link to="/Signup" className="blue-button">Logout</Link>
+          </div>
+        ) : (
+          <div className="button-container">
+          <Link to="/Signup" className="blue-button">Sign up</Link>
           <Link to="/login" className="blue-button">Log in</Link>
+          </div>
+        )}
+
         </div>
       </header>
 

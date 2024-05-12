@@ -9,12 +9,15 @@ async function register(req, res) {
     console.log(first);
     try {
       const existingUser = await User.findOne({ Username });
-      
+      const existingemail = await User.findOne({ Email });
       if (existingUser) {
         console.log(existingUser);
         return res.json({message:"Username already exists"});
       }
-  
+      if (existingemail) {
+        console.log(existingUser);
+        return res.json({message:"Email already exists"});
+      }
       const newUser = new User({
         Fullname: {
           first,
@@ -47,7 +50,7 @@ async function login(req,res)
       }
       
      
-      res.json({message:"User not FOund"});
+      res.json({message:"User not Found"});
     } catch (error) {
       console.error("Error creating user:", error);
       res.json({message:"Server error"});
