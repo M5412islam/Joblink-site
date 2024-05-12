@@ -207,6 +207,7 @@ body {
   flex: 1;
   background-color: #f0f0f0;
   display: flex; 
+  background-color: #f0f0f0 ;;
 }
 
 /* Flex container for cards */
@@ -233,6 +234,7 @@ body {
   text-align: center;
   margin-right: 30px;
   position: relative;
+  background-color:#007bff ;
   
 }
 

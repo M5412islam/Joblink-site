@@ -36,10 +36,10 @@ const Homepage = () => {
         <nav className="navigation">
           <ul>
             <li><Link to="/" className="active">Home</Link></li>
-            <li><Link to="/findjobs">Find Jobs</Link></li>
-            <li><Link to="/blog">Blog</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/about">About</Link></li>
+            <li><Link to="/findjobs">Find-Jobs</Link></li>
+            <li><Link to="/MyPosts">MyPosts</Link></li>
+            <li><Link to="/Post-Jobs">Post-Jobs</Link></li>
+            <li><Link to="/About">About</Link></li>
           </ul>
         </nav>
         <div className="button-container">
