@@ -20,7 +20,15 @@ body, html {
     align-items: center;
     height: 100%;
   }
-  
+  .line
+  {
+    margin-left: 10%;
+  }
+  .message
+  {
+    margin-left: 10%;
+    color: red;
+  }
   .one-third {
     width: 33.33%;
     background-color: #007bff;
@@ -32,6 +40,7 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 100%;
+    
   }
   
   .content {
@@ -41,6 +50,7 @@ body, html {
   .form-container {
     width: 80%;
     max-width: 400px;
+    
   }
   
   .form-field {
@@ -50,17 +60,20 @@ body, html {
   .form-field label {
     display: block;
     margin-bottom: 5px;
+    margin-left: 10%;
   }
   
   .form-field input {
-    width: 100%;
+    width: 60%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-left: 10%;
   }
   
   .blue-button {
     background-color: #007bff;
+    margin-left: 10%;
     color: white;
     border: none;
     padding: 12px 24px;
