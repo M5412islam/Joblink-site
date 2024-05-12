@@ -53,11 +53,11 @@ const About = () => {
           </div>
           <nav className="A-navigation">
             <ul>
-              <li><Link to="/" className="active">Home</Link></li>
-              <li><Link to="/Findjobs">Find Jobs</Link></li>
-              <li><Link to="/Blog">Blog</Link></li>
-              <li><Link to="/Contact">Contact</Link></li>
-              <li><Link to="/About_Us">About</Link></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/findjobs">Find-Jobs</Link></li>
+            <li><Link to="/MyPosts">MyPosts</Link></li>
+            <li><Link to="/Create_Post">Post-Jobs</Link></li>
+            <li><Link to="/About"  className="active">About</Link></li>
             </ul>
           </nav>
         </div>
