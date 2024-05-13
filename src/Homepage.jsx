@@ -98,7 +98,7 @@ console.log("logged"+isLogged);
           <div className="card-container">
           {showFirstSet ? (
   firstSetData.map((card) => (
-    <div key={card.id} className="card" onClick={() => handleCardClick(card)}>
+    <div key={card.id} className="card">
       <img src={card.logo} alt={card.title} />
       <h1>{card.title}</h1>
       <p>{card.description}</p>
@@ -106,7 +106,7 @@ console.log("logged"+isLogged);
   ))
 ) : (
   secondSetData.map((card) => (
-    <div key={card.id} className="card" onClick={() => handleCardClick(card)}>
+    <div key={card.id} className="card" >
       <img src={card.logo} alt={card.title} />
       <h1>{card.title}</h1>
       <p>{card.description}</p>
