@@ -10,11 +10,11 @@ const CreatePost = () => {
                 </div>
                 <nav className="C-navigation">
                     <ul>
-                        <li><Link to="/" className="active">Home</Link></li>
-                        <li><Link to="/findjobs">Find Jobs</Link></li>
-                        <li><Link to="/myPosts">My Posts</Link></li>
-                        <li><Link to="/postJobs">Post Jobs</Link></li>
-                        <li><Link to="/about">About</Link></li>
+                    <li><Link to="/" >Home</Link></li>
+                    <li><Link to="/findjobs">Find-Jobs</Link></li>
+                    <li><Link to="/MyPosts">MyPosts</Link></li>
+                    <li><Link to="/Create_Post" className="active">Post-Jobs</Link></li>
+                    <li><Link to="/About">About</Link></li>
                     </ul>
                 </nav>
             </header>
