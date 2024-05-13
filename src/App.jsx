@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-  =======
+
 import React from "react";
 import FindJobs from "./FindJobs";
 function App() {
