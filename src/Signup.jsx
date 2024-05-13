@@ -77,7 +77,7 @@ const Signup = () => {
           <h2>Already have an account?</h2>
           <p>Get back to your profile</p>
           <div className="button-container">
-            <button onClick={() => window.location.href = '/login'}>Login</button>
+            <button>Login</button>
           </div>
         </div>
       </div>

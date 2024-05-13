@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link,} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CreatePost = () => {
     const today = new Date().toISOString().split('T')[0];

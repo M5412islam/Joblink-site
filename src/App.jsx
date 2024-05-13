@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import About from "./About";
 import CPosts from "./Create-Post";
 import Homepage from "./Homepage";
-import About from "./About";
 import Signup from "./Signup";
 import Login from "./login";
 

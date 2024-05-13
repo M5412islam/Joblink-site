@@ -96,23 +96,24 @@ console.log("logged"+isLogged);
         {/* Part 1: Cards */}
         <div className="part1">
           <div className="card-container">
-            {showFirstSet ? (
-              firstSetData.map((card) => (
-                <div key={card.id} className="card">
-                  <img src={card.logo} alt={card.title} />
-                  <h1>{card.title}</h1>
-                  <p>{card.description}</p>
-                </div>
-              ))
-            ) : (
-              secondSetData.map((card) => (
-                <div key={card.id} className="card">
-                  <img src={card.logo} alt={card.title} />
-                  <h1>{card.title}</h1>
-                  <p>{card.description}</p>
-                </div>
-              ))
-            )}
+          {showFirstSet ? (
+  firstSetData.map((card) => (
+    <div key={card.id} className="card" onClick={() => handleCardClick(card)}>
+      <img src={card.logo} alt={card.title} />
+      <h1>{card.title}</h1>
+      <p>{card.description}</p>
+    </div>
+  ))
+) : (
+  secondSetData.map((card) => (
+    <div key={card.id} className="card" onClick={() => handleCardClick(card)}>
+      <img src={card.logo} alt={card.title} />
+      <h1>{card.title}</h1>
+      <p>{card.description}</p>
+    </div>
+  ))
+)}
+
           </div>
         </div>
         
