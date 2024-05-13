@@ -33,19 +33,17 @@ const jobschema = mongoose.Schema({
         type: Date,
         required: true,
     },
-    Contact: {
-        email: {
-            type: String,
-            required: true
-        },
-        phone: {
-            type: String,
-            required: true
-        }
+    position: {
+        type: String,
+        required: true
     },
-    
+    email: {
+            type: String,
+            required: true
+    },
+
 });
 
-const User = mongoose.model("User", userschema);
+const Jobs = mongoose.model("Jobs", jobschema);
 
-module.exports = User;
+module.exports = Jobs;

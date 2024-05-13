@@ -36,19 +36,30 @@ console.log("logged"+isLogged);
         </div>
         
         <nav className="navigation">
+        {isLogged ? (
           <ul>
             <li><Link to="/" className="active">Home</Link></li>
             <li><Link to="/findjobs">Find-Jobs</Link></li>
             <li><Link to="/MyPosts">MyPosts</Link></li>
-            <li><Link to="/Create_Post">Post-Jobs</Link></li>
+            <li><Link to={`/Create_Post/${isLogged}`}>Post-Jobs</Link></li>
             <li><Link to="/About">About</Link></li>
           </ul>
+          ) : (
+            <ul>
+            <li><Link to="/" className="active">Home</Link></li>
+            <li><Link to="/login">Find-Jobs</Link></li>
+            <li><Link to="/login">MyPosts</Link></li>
+            <li><Link to="/login">Post-Jobs</Link></li>
+            <li><Link to="/login">About</Link></li>
+          </ul>
+          )};
         </nav>
         <div className="button-container">
       
         {isLogged ? (
           <div className="button-container">
-          <Link to="/Signup" className="blue-button">Logout</Link>
+           
+          <Link to="/login" className="blue-button" onClick={isLogged=false}>Logout</Link>
           </div>
         ) : (
           <div className="button-container">

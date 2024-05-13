@@ -2,11 +2,12 @@
 const User = require("../models/usermodel");
 const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcrypt');
 router.use(express.json());
 async function register(req, res) {
     const { first, last, Username, Email, Password } = req.body;
-    console.log(first);
+    if (!first || !last || !Username || !Email || !Password) {
+      return res.json({ message: "Please provide all required fields" });
+  }
     try {
       const existingUser = await User.findOne({ Username });
       const existingemail = await User.findOne({ Email });
@@ -40,6 +41,9 @@ async function register(req, res) {
 async function login(req,res)
 {
     const { Username, Password } = req.body;
+    if (!Username  || !Password) {
+      return res.json({ message: "Please provide all required fields" });
+  }
     try {
       const existingUser = await User.findOne({ Username });
       

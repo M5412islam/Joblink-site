@@ -49,23 +49,23 @@ const Signup = () => {
           <form onSubmit={handleSubmit}>
             <div className="form-field">
               <label htmlFor="firstname">First Name:</label>
-              <input type="text" id="firstname" name='first' value={formData.first} onChange={handleChange} />
+              <input type="text" id="firstname" name='first' value={formData.first} onChange={handleChange} required/>
             </div>
             <div className="form-field">
               <label htmlFor="lastname">Last Name:</label>
-              <input type="text" id="lastname" name='last' value={formData.last} onChange={handleChange} />
+              <input type="text" id="lastname" name='last' value={formData.last} onChange={handleChange} required/>
             </div>
             <div className="form-field">
               <label htmlFor="username">Username:</label>
-              <input type="text" id="username" name='Username' value={formData.Username} onChange={handleChange} />
+              <input type="text" id="username" name='Username' value={formData.Username} onChange={handleChange} required/>
             </div>
             <div className="form-field">
               <label htmlFor="email">Email:</label>
-              <input type="email" id="email" name='Email' value={formData.Email} onChange={handleChange} />
+              <input type="email" id="email" name='Email' value={formData.Email} onChange={handleChange} required/>
             </div>
             <div className="form-field">
               <label htmlFor="password">Password:</label>
-              <input type="password" id="password" name='Password' value={formData.Password} onChange={handleChange} />
+              <input type="password" id="password" name='Password' value={formData.Password} onChange={handleChange} required/>
             </div>
             <button type="submit" className="blue-button">Sign up</button>
           </form>
