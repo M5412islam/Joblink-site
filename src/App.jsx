@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Homepage isLogged={isLogged} />} />
-        <Route path="Create_Post/:isLogged" element={<CPosts />} />
+        <Route path="Create_Post" element={<CPosts />} />
         <Route path="About" element={<About />} />
         <Route path="Signup" element={<Signup />} />
         <Route path="Login" element={<Login setIsLogged={setIsLogged} />} />

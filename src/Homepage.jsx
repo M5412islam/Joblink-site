@@ -41,7 +41,7 @@ console.log("logged"+isLogged);
             <li><Link to="/" className="active">Home</Link></li>
             <li><Link to="/findjobs">Find-Jobs</Link></li>
             <li><Link to="/MyPosts">MyPosts</Link></li>
-            <li><Link to={`/Create_Post/${isLogged}`}>Post-Jobs</Link></li>
+            <li><Link to={`/Create_Post`}>Post-Jobs</Link></li>
             <li><Link to="/About">About</Link></li>
           </ul>
           ) : (

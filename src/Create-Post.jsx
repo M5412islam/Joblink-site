@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link,useParams } from 'react-router-dom';
+import { Link,} from 'react-router-dom';
 
 const CreatePost = () => {
     const today = new Date().toISOString().split('T')[0];
@@ -16,8 +16,6 @@ const CreatePost = () => {
         position: '',
         email: '',
     });
-    let { isLogged } = useParams();
-    console.log(isLogged);
     const [message, setMessage] = useState('');
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -66,7 +64,7 @@ const CreatePost = () => {
                     </ul>
                 </nav>
                 <div className="button-container">
-                <Link to="/login" className="blue-button" onClick={isLogged=false}>Logout</Link>
+                <Link to="/login" className="blue-button">Logout</Link>
                 </div>
 
             </header>
