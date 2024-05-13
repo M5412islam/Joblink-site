@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const About = () => {
+  let { isLogged } = useParams();
   return (
     <div className='A-body'>
       <div className="about-content">
@@ -53,22 +54,25 @@ const About = () => {
           </div>
           <nav className="A-navigation">
             <ul>
-              <li><Link to="/" className="active">Home</Link></li>
-              <li><Link to="/Findjobs">Find Jobs</Link></li>
-              <li><Link to="/Blog">Blog</Link></li>
-              <li><Link to="/Contact">Contact</Link></li>
-              <li><Link to="/About_Us">About</Link></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/findjobs">Find-Jobs</Link></li>
+            <li><Link to="/MyPosts">MyPosts</Link></li>
+            <li><Link to="/Create_Post">Post-Jobs</Link></li>
+            <li><Link to="/About"  className="active">About</Link></li>
             </ul>
           </nav>
         </div>
         <div className="right-side">
-    <div className="company-info">
-      <h2><span className='blue-text'>C</span>ontact</h2>
-      <p><strong>Address:</strong> Street# 2, Johar Town, Lahore, Pakistan</p>
-      <p><strong>Email:</strong> info@joblink.com</p>
-      <p><strong>Phone:</strong> +1234567890</p>
-    </div>
-  </div>
+          <div className="company-info">
+            <h2><span className='blue-text'>C</span>ontact</h2>
+            <p><strong>Address:</strong> Street# 2, Johar Town, Lahore, Pakistan</p>
+            <p><strong>Email:</strong> info@joblink.com</p>
+            <p><strong>Phone:</strong> +1234567890</p>
+          </div>
+        </div>
+        <div className="button-container" style={{marginRight: '30px'}}>
+            <Link to="/login" className="blue-button" onClick={isLogged=false}>Logout</Link>
+          </div>
       </header>
     </div>
   );

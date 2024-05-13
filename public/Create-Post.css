@@ -1,4 +1,4 @@
-/* Add this to your existing CreatePost.css or your main CSS file */
+
 
 .C-Body{
     background-color: #007bff;
@@ -10,8 +10,8 @@
     justify-content: space-between;
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 250px;
-    padding-right: 180px;
+    padding-left: 10px;
+    padding-right: 20px;
     background-color: #f0f0f0;
 }
 
@@ -95,6 +95,12 @@
     font-weight: bold;
 }
 
+.message
+  {
+    margin-left: 10%;
+    color: red;
+  }
+
 .form-group input[type="text"],
 .form-group input[type="date"],
 .form-group input[type="email"],
@@ -106,6 +112,11 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-top: 5px;
+}
+
+.form-group textarea
+{
+    resize: none;
 }
 
 #experienceLevel,
@@ -150,6 +161,44 @@
 .C-button:hover {
     background-color: blue;
 }
+
+.blue-button {
+    background-color: #007bff;
+    margin-left: 10%;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .blue-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .button-container {
+    /* margin-top: ; */
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button-container button {
+    background-color: #ffffff;
+    color: #007bff;
+    border: none;
+    /* padding: 12px 24px; */
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-container button:hover {
+    background-color: #0056b3;
+  }
+
 
 
 .form-container {
