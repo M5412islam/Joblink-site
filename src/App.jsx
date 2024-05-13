@@ -1,12 +1,14 @@
 import React from "react";
+import FindJobs from "./FindJobs";
 function App() {
   return (
     <div>
       {/* <Login />
       <Signup /> */}
       {/* <Homepage /> */}
-       <About/>
-     {/* <Createposte/> */}
+     {/* <CreatePost/> */}
+     {/* <About/> */}
+     <FindJobs/>
     </div>
   );
 }

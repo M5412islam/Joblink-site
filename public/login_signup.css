@@ -94,6 +94,10 @@ body, html {
   .button-container button:hover {
     background-color: #0056b3;
   }
-
+  .buttonRow {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Adjust margin as needed */
+}
 
   /* css styles */
