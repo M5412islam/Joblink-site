@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Signuprouter=require("./routes/Signuprouter");
 const LoginRouter=require("./routes/LoginRouter");
+const jobcreateRoute=require("./routes/jobcreateRoute");
 const app = express();
 const cors=require("cors");
 app.use(express.urlencoded({ extended: true }));
@@ -15,9 +16,9 @@ mongoose.connect("mongodb://127.0.0.1:27017/JobLink")
         console.error("MongoDB connection error:", err);
     });
 
-//app.use("/Signup",Signuprouter);
+app.use("/Signup",Signuprouter);
 app.use("/Login",LoginRouter);
- 
+app.use("/create_job",jobcreateRoute); 
 
 app.listen(5000, () => {
     console.log("Server is running on port 5000");

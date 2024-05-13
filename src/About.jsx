@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const About = () => {
+  let { isLogged } = useParams();
   return (
     <div className='A-body'>
       <div className="about-content">
@@ -62,13 +63,16 @@ const About = () => {
           </nav>
         </div>
         <div className="right-side">
-    <div className="company-info">
-      <h2><span className='blue-text'>C</span>ontact</h2>
-      <p><strong>Address:</strong> Street# 2, Johar Town, Lahore, Pakistan</p>
-      <p><strong>Email:</strong> info@joblink.com</p>
-      <p><strong>Phone:</strong> +1234567890</p>
-    </div>
-  </div>
+          <div className="company-info">
+            <h2><span className='blue-text'>C</span>ontact</h2>
+            <p><strong>Address:</strong> Street# 2, Johar Town, Lahore, Pakistan</p>
+            <p><strong>Email:</strong> info@joblink.com</p>
+            <p><strong>Phone:</strong> +1234567890</p>
+          </div>
+        </div>
+        <div className="button-container" style={{marginRight: '30px'}}>
+            <Link to="/login" className="blue-button" onClick={isLogged=false}>Logout</Link>
+          </div>
       </header>
     </div>
   );

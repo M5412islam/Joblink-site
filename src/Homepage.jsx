@@ -7,18 +7,15 @@ import softwareEngineerLogo from './Images-Logos/Software Engineer.png';
 import teacherLogo from './Images-Logos/Teacher.png';
 import webDeveloperLogo from './Images-Logos/Web Developer.png';
 
-const Homepage = ({ IsLogged }) => {
+const Homepage = ({ isLogged })=> {
   const [showFirstSet, setShowFirstSet] = useState(true);
-
+  const params = new URLSearchParams(window.location.search);
+  const param1 = params.get('param1');
+  isLogged=param1;
   const toggleCards = () => {
     setShowFirstSet(!showFirstSet);
   };
-
-  const handleCardClick = (card) => {
-    console.log(`Clicked on card with title: ${card.title}`);
-    // Do something with the clicked card, such as navigating to a details page
-  };
-  
+console.log("logged"+isLogged);
   const firstSetData = [
     { id: 1, logo: softwareEngineerLogo, title: 'Software Engineer', description: 'Build amazing software with team management skills' },
     { id: 2, logo: webDeveloperLogo, title: 'Web Developer', description: 'Create stunning websites that are visually appealing' },
@@ -39,26 +36,39 @@ const Homepage = ({ IsLogged }) => {
         </div>
         
         <nav className="navigation">
+        {isLogged ? (
           <ul>
             <li><Link to="/" className="active">Home</Link></li>
             <li><Link to="/findjobs">Find-Jobs</Link></li>
             <li><Link to="/MyPosts">MyPosts</Link></li>
-            <li><Link to="/Create_Post">Post-Jobs</Link></li>
+            <li><Link to={`/Create_Post/${isLogged}`}>Post-Jobs</Link></li>
             <li><Link to="/About">About</Link></li>
           </ul>
+          ) : (
+            <ul>
+            <li><Link to="/" className="active">Home</Link></li>
+            <li><Link to="/login">Find-Jobs</Link></li>
+            <li><Link to="/login">MyPosts</Link></li>
+            <li><Link to="/login">Post-Jobs</Link></li>
+            <li><Link to="/login">About</Link></li>
+          </ul>
+          )};
         </nav>
-        {IsLogged ? (
+        <div className="button-container">
+      
+        {isLogged ? (
           <div className="button-container">
-           {/* Add Logout button or any other content for logged-in users */}
-            <button className="blue-button">Logout</button>
+           
+          <Link to="/login" className="blue-button" onClick={isLogged=false}>Logout</Link>
           </div>
         ) : (
           <div className="button-container">
-            <Link to="/Signup" className="blue-button">Sign up</Link>
-            <Link to="/login" className="blue-button">Log in</Link>
+          <Link to="/Signup" className="blue-button">Sign up</Link>
+          <Link to="/login" className="blue-button">Log in</Link>
           </div>
         )}
 
+        </div>
       </header>
 
       <div className="main-content">

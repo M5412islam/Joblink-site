@@ -20,9 +20,9 @@ const Login = ({setIsLogged}) => {
         body: JSON.stringify(formData)
       });
       const data = await response.json();
-      if(data.message === "Username Found") {
-        setIsLogged(true);
-        window.location.href = '/'; 
+      if (data.message === "Username Found") {
+        setIsLogged(true); // Update isLogged state
+        window.location.href = '/?param1=true';
       } else {
         setMessage('Incorrect Username or password');
       }
@@ -30,6 +30,7 @@ const Login = ({setIsLogged}) => {
       console.error('Error logging in:', error);
     }
   };
+  
   
 
   const handleChange = (event) => {
@@ -59,11 +60,11 @@ const Login = ({setIsLogged}) => {
                 
                 <div className="form-field">
                   <label htmlFor="username">Username:</label>
-                  <input type="text" id="username" name='Username' value={formData.Username} onChange={handleChange} />
+                  <input type="text" id="username" name='Username' value={formData.Username} onChange={handleChange} required/>
                 </div>
                 <div className="form-field">
                   <label htmlFor="password">Password:</label>
-                  <input type="password" id="password" name='Password' value={formData.Password} onChange={handleChange} />
+                  <input type="password" id="password" name='Password' value={formData.Password} onChange={handleChange} required/>
                 </div>
                 <button type="submit" className="blue-button">Sign in</button>
               </div>

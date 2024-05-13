@@ -2,19 +2,23 @@
 const User = require("../models/usermodel");
 const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcrypt');
 router.use(express.json());
 async function register(req, res) {
     const { first, last, Username, Email, Password } = req.body;
-    console.log(first);
+    if (!first || !last || !Username || !Email || !Password) {
+      return res.json({ message: "Please provide all required fields" });
+  }
     try {
       const existingUser = await User.findOne({ Username });
-      
+      const existingemail = await User.findOne({ Email });
       if (existingUser) {
         console.log(existingUser);
         return res.json({message:"Username already exists"});
       }
-  
+      if (existingemail) {
+        console.log(existingUser);
+        return res.json({message:"Email already exists"});
+      }
       const newUser = new User({
         Fullname: {
           first,
@@ -37,6 +41,9 @@ async function register(req, res) {
 async function login(req,res)
 {
     const { Username, Password } = req.body;
+    if (!Username  || !Password) {
+      return res.json({ message: "Please provide all required fields" });
+  }
     try {
       const existingUser = await User.findOne({ Username });
       
@@ -47,7 +54,7 @@ async function login(req,res)
       }
       
      
-      res.json({message:"User not FOund"});
+      res.json({message:"User not Found"});
     } catch (error) {
       console.error("Error creating user:", error);
       res.json({message:"Server error"});
