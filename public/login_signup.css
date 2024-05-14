@@ -5,6 +5,7 @@ body, html {
     padding: 0;
   }
   
+
   .container {
     display: flex;
     height: 93.75vh;
@@ -32,7 +33,6 @@ body, html {
   .one-third {
     width: 33.33%;
     background-color: #007bff;
-    color: white;
     padding: 20px;
     text-align: center;
     display: flex;

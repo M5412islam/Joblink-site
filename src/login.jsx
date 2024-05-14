@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Signup from './Signup';
+import backgroundimage from "./Images-Logos/backgroundimage.jpeg";
 
 const Login = ({setIsLogged}) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -69,15 +70,19 @@ const Login = ({setIsLogged}) => {
                 <button type="submit" className="blue-button">Sign in</button>
               </div>
             </div>
-            <div className="one-third">
+          
+            <div className='one-third' style={{ backgroundImage: `url(${backgroundimage})`, backgroundRepeat: 'no-repeat' }}>
+            <div >
+            
               <div className="content">
-                <h2>New Here</h2>
-                <p>Sign Up to discover new job Opportunities</p>
+                <h2 style={{color:'black'}}>New Here</h2>
+                <p style={{color:'black'}}>Sign Up to discover new job Opportunities</p>
                 <div className="button-container">
-                  <button onClick={handleToggle}>Sign up</button>
+                  <button style={{backgroundColor:'black'}} onClick={handleToggle}>Sign up</button>
                 </div>
               </div>
             </div>
+          </div>
           </div>
         ) : null}
       </form>

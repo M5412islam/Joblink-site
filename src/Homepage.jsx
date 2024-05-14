@@ -52,9 +52,9 @@ console.log("logged"+isLogged);
             <li><Link to="/login">Post-Jobs</Link></li>
             <li><Link to="/login">About</Link></li>
           </ul>
-          )};
+          )}
         </nav>
-        <div className="button-container">
+      
       
         {isLogged ? (
           <div className="button-container">
@@ -63,12 +63,13 @@ console.log("logged"+isLogged);
           </div>
         ) : (
           <div className="button-container">
+    
           <Link to="/Signup" className="blue-button">Sign up</Link>
           <Link to="/login" className="blue-button">Log in</Link>
           </div>
         )}
 
-        </div>
+        
       </header>
 
       <div className="main-content">
@@ -81,7 +82,7 @@ console.log("logged"+isLogged);
           </p>
           <div className="search-container">
             <input type="text" placeholder="Search for jobs..." />
-            <button className="blue-button">Search</button>
+            <button className="button">Search</button>
           </div>
         </div>
 
