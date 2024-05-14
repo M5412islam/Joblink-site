@@ -39,7 +39,7 @@ console.log("logged"+isLogged);
         {isLogged ? (
           <ul>
             <li><Link to="/" className="active">Home</Link></li>
-            <li><Link to="/findjobs">Find-Jobs</Link></li>
+            <li><Link to="/FindJobs">Find-Jobs</Link></li>
             <li><Link to="/MyPosts">MyPosts</Link></li>
             <li><Link to={`/Create_Post`}>Post-Jobs</Link></li>
             <li><Link to="/About">About</Link></li>

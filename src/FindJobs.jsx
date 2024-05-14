@@ -4,7 +4,34 @@ import { Link } from 'react-router-dom';
 
 const FindJobs = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = 5; // Example total number of pages
+    const totalPages = 5; 
+    const [message, setMessage] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+
+    const handleSearch = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await fetch('/Findjobs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ searchTerm: searchQuery })
+            });
+            const data = await response.json();
+            if (data.message === "No Result") {
+                setMessage(data.message);
+            } else {
+                setSearchResults(data);
+            }
+        } catch (error) {
+            console.error('Error creating job:', error);
+        }
+    };
+    const handleInputChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
 
     const handlePreviousPage = () => {
         setCurrentPage(currentPage - 1);
@@ -25,13 +52,16 @@ const FindJobs = () => {
                 </div>
                 <nav className="C-navigation">
                     <ul>
-                        <li><Link to="/" className="active">Home</Link></li>
-                        <li><Link to="/findjobs">Find Jobs</Link></li>
-                        <li><Link to="/myPosts">My Posts</Link></li>
-                        <li><Link to="/postJobs">Post Jobs</Link></li>
+                        <li><Link to="/" >Home</Link></li>
+                        <li><Link to="/findjobs" className="active">Find Jobs</Link></li>
+                        <li><Link to="/findjobs">My Posts</Link></li>
+                        <li><Link to="/Create_Post">Post Jobs</Link></li>
                         <li><Link to="/about">About</Link></li>
                     </ul>
                 </nav>
+                <div className="button-container">
+                <Link to="/login" className="blue-button">Logout</Link>
+                </div>
             </header>
 
             {/* Code for the part Below header */}
@@ -76,166 +106,87 @@ const FindJobs = () => {
                 <h1 className='blue-text'>Recommended Jobs</h1>
                 </div>
             <div className="U-search-container">
-            <input type="text" className="U-search-field" placeholder="Search..." />
-            <button className="U-search-button">Search</button>
+            <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={handleInputChange}
+                    placeholder="Search..."
+                    className="U-search-field"
+                />
+                <button onClick={handleSearch} className="U-search-button">Search</button>
+                <p className='message'>{message}</p>
             </div>
                 </div>
 
-                    <div className="F-middle">
-                        <div className="M-upper">
-                        <div className="M-upper">
-    <div className="U-flex">
-        <div className="cardUpper">
-        <div className="buttonContainer">
-            <div className="buttonShape">Date</div>
-            <div className="bookmarkCircle">&#x2661;</div>
+                <div className="F-middle">
+    <div className="M-upper">
+        <div className="M-upper">
+            <div className="U-flex">
+                {searchResults.slice(0, 3).map(result => (
+                    <div key={result._id}>
+        <div className='FullCard'>
+            <div className="cardUpper">
+                <div className="buttonContainer">
+                <div className="buttonShape">{new Date(result.deadline).toLocaleDateString()}</div>
+                    <div className="bookmarkCircle">&#x2661;</div>
+                </div>
+                <h3 className='Cards-heading'>{result.jobTitle}</h3>
+                <div className="buttonRow" style={{marginTop:1}}>
+                    <div className="U-buttonShape">{result.jobType}</div>
+                    <div className="U-buttonShape">{result.Education}</div>
+                </div>
+                <div className="buttonRow" style={{marginTop:1}}>
+                    <div className="U-buttonShape">{result.Experience}</div>
+                    <div className="U-buttonShape">{result.email}</div>
+                </div>
+            </div>
+            <div className="cardLower">
+                <div className="L-buttonContainer">
+                    <div className="L-bookmarkCircle">{result.Salary}/week</div>
+                    <div className="L-buttonShape">Details</div>   
+                </div>
+            </div>
+            </div>
         </div>
-        <h3 className='Cards-heading'>UI/UX Designer Designer</h3>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">FullTime</div>
-            <div className="U-buttonShape">Bechuler</div>
-        </div>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">1 Year</div>
-            <div className="U-buttonShape">Email</div>
-        </div>
-        
-        </div>
-        <div className="cardLower">
-        <div className="L-buttonContainer">
-            <div className="L-bookmarkCircle">$450/week</div>
-            <div className="L-buttonShape">Details</div>   
-        </div>
-        </div>
-    </div>
-    <div className="U-flex">
-        <div className="cardUpper">
-        <div className="buttonContainer">
-            <div className="buttonShape">Date</div>
-            <div className="bookmarkCircle">&#x2661;</div>
-        </div>
-        <h3 className='Cards-heading'>UI/UX Designer Designer</h3>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">FullTime</div>
-            <div className="U-buttonShape">Bechuler</div>
-        </div>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">1 Year</div>
-            <div className="U-buttonShape">Email</div>
-        </div>
-        
-        </div>
-        <div className="cardLower">
-        <div className="L-buttonContainer">
-            <div className="L-bookmarkCircle">$450/week</div>
-            <div className="L-buttonShape">Details</div>   
-        </div>
-        </div>
-    </div>
-    <div className="U-flex">
-        <div className="cardUpper">
-        <div className="buttonContainer">
-            <div className="buttonShape">Date</div>
-            <div className="bookmarkCircle">&#x2661;</div>
-        </div>
-        <h3 className='Cards-heading'>UI/UX Designer Designer</h3>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">FullTime</div>
-            <div className="U-buttonShape">Bechuler</div>
-        </div>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">1 Year</div>
-            <div className="U-buttonShape">Email</div>
-        </div>
-        
-        </div>
-        <div className="cardLower">
-        <div className="L-buttonContainer">
-            <div className="L-bookmarkCircle">$450/week</div>
-            <div className="L-buttonShape">Details</div>   
-        </div>
-        </div>
-    </div>
+    ))}
+</div>
     
 </div>
-                        </div>
-                        <div className="M-lower">
-                        <div className="M-upper">
-                        <div className="U-flex">
-        <div className="cardUpper">
-        <div className="buttonContainer">
-            <div className="buttonShape">Date</div>
-            <div className="bookmarkCircle">&#x2661;</div>
-        </div>
-        <h3 className='Cards-heading'>UI/UX Designer Designer</h3>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">FullTime</div>
-            <div className="U-buttonShape">Bechuler</div>
-        </div>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">1 Year</div>
-            <div className="U-buttonShape">Email</div>
-        </div>
-        
-        </div>
-        <div className="cardLower">
-        <div className="L-buttonContainer">
-            <div className="L-bookmarkCircle">$450/week</div>
-            <div className="L-buttonShape">Details</div>   
-        </div>
-        </div>
-    </div>
-    <div className="U-flex">
-        <div className="cardUpper">
-        <div className="buttonContainer">
-            <div className="buttonShape">Date</div>
-            <div className="bookmarkCircle">&#x2661;</div>
-        </div>
-        <h3 className='Cards-heading'>UI/UX Designer Designer</h3>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">FullTime</div>
-            <div className="U-buttonShape">Bechuler</div>
-        </div>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">1 Year</div>
-            <div className="U-buttonShape">Email</div>
-        </div>
-        
-        </div>
-        <div className="cardLower">
-        <div className="L-buttonContainer">
-            <div className="L-bookmarkCircle">$450/week</div>
-            <div className="L-buttonShape">Details</div>   
-        </div>
-        </div>
-    </div>
-    <div className="U-flex">
-        <div className="cardUpper">
-        <div className="buttonContainer">
-            <div className="buttonShape">Date</div>
-            <div className="bookmarkCircle">&#x2661;</div>
-        </div>
-        <h3 className='Cards-heading'>UI/UX Designer Designer</h3>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">FullTime</div>
-            <div className="U-buttonShape">Bechuler</div>
-        </div>
-        <div className="buttonRow" style={{marginTop:1}}>
-            <div className="U-buttonShape">1 Year</div>
-            <div className="U-buttonShape">Email</div>
-        </div>
-        
-        </div>
-        <div className="cardLower">
-        <div className="L-buttonContainer">
-            <div className="L-bookmarkCircle">$450/week</div>
-            <div className="L-buttonShape">Details</div>   
-        </div>
-        </div>
-    </div>
-      
 </div>
-                        </div>
+<div className="M-lower">
+        <div className="M-upper">
+            <div className="U-flex">
+                {searchResults.slice(3).map(result => (
+                    <div key={result._id}>
+                        <div className='FullCard'>
+                        <div className="cardUpper">
+                <div className="buttonContainer">
+                <div className="buttonShape">{new Date(result.deadline).toLocaleDateString()}</div>
+                    <div className="bookmarkCircle">&#x2661;</div>
+                </div>
+                <h3 className='Cards-heading'>{result.jobTitle}</h3>
+                <div className="buttonRow" style={{marginTop:1}}>
+                    <div className="U-buttonShape">{result.jobType}</div>
+                    <div className="U-buttonShape">{result.Education}</div>
+                </div>
+                <div className="buttonRow" style={{marginTop:1}}>
+                    <div className="U-buttonShape">{result.Experience}</div>
+                    <div className="U-buttonShape">{result.email}</div>
+                </div>
+            </div>
+            <div className="cardLower">
+                <div className="L-buttonContainer">
+                    <div className="L-bookmarkCircle">{result.Salary}/week</div>
+                    <div className="L-buttonShape">Details</div>   
+                </div>
+            </div>
+            </div>
+        </div>
+    ))}
+     </div>
+
+</div>
+ </div>
                     </div>
                     <div className="F-lower">
                         <ul className="pagination">

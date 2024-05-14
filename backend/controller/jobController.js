@@ -4,13 +4,10 @@ const router = express.Router();
 router.use(express.json());
 
 async function create(req, res) {
-    const { jobTitle, Company, location, jobType, Description, skills, Education, Experience, deadline, position,email } = req.body;
-    if (!jobTitle || !jobType || !Education || !Experience || !deadline || !position || !email) {
-      return res.json({ message: "Please provide all required fields" });
-  }
+    const { jobTitle, Company, location, jobType, Description, skills, Education, Experience, deadline, position,Salary,email } = req.body;
     try {
         const newjob = new Job({
-            jobTitle, Company, location, jobType, Description, skills, Education, Experience, deadline, position,email
+            jobTitle, Company, location, jobType, Description, skills, Education, Experience, deadline, position,Salary,email
       });
   
       await newjob.save();
@@ -22,4 +19,39 @@ async function create(req, res) {
     }
 }
 
-module.exports={create};
+async function search(req,res)
+{
+  const searchTerm = req.body;
+  console.log(searchTerm);
+  const schemaKeys = Object.keys(Job.schema.paths).filter(key => {
+    const fieldType = Job.schema.paths[key].instance;
+    return fieldType === 'String'; 
+});
+
+
+const searchConditions = schemaKeys.map(key => ({
+    [key]: { $regex: new RegExp(`.*${searchTerm}.*`, 'i') } 
+}));
+
+
+const searchQuery = {
+    $or: searchConditions
+};
+
+
+Job.find(searchQuery)
+.then(results => {
+    console.log("Search results:", results);
+    res.json(results);
+})
+.catch(err => {
+    console.error("Error executing search query:", err);
+    res.json({message: "No Result"})
+});
+}
+
+module.exports=
+{
+  create,
+  search
+};

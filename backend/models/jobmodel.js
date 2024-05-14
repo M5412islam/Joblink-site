@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 const jobschema = mongoose.Schema({
     jobTitle: {
         type: String,
@@ -37,12 +37,17 @@ const jobschema = mongoose.Schema({
         type: String,
         required: true
     },
+    Salary: {
+        type: Number,
+        required: true
+    },
     email: {
             type: String,
             required: true
     },
 
 });
+
 
 const Jobs = mongoose.model("Jobs", jobschema);
 

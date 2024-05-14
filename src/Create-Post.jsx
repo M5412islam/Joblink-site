@@ -14,6 +14,7 @@ const CreatePost = () => {
         Experience: '',
         deadline: '',
         position: '',
+        Salary: '',
         email: '',
     });
     const [message, setMessage] = useState('');
@@ -136,6 +137,7 @@ const CreatePost = () => {
                                 <option value="Above 5 years">Above 5 years</option>
                             </select>
                         </div>
+                        
                         <div className="form-group">
                             <label htmlFor="applicationDeadline">Application Deadline<span style={{ color: 'red' }}>*</span>:</label>
                             <input type="date" id="applicationDeadline" name="deadline" min={today} required value={formData.Username} onChange={handleChange} />
@@ -153,6 +155,10 @@ const CreatePost = () => {
                                 <option value="5">5</option>
                                 <option value="5+">5+</option>
                             </select>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="Salary">Salary:</label>
+                            <input type="text" id="Salary" name="Salary" required placeholder='e.g 10000' value={formData.Username} onChange={handleChange} />
                         </div>
                         <div className="form-group">
                             <label>Contact Information<span style={{ color: 'red' }}>*</span>:</label>
