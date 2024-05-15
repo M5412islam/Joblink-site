@@ -1,5 +1,6 @@
 // FindJobs.jsx
-import { default as React, useState, useEffect } from 'react';
+//Issue in searching part
+import { default as React, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Myposts = () => {
