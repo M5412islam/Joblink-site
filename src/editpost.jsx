@@ -1,54 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link,useLocation } from 'react-router-dom';
 
-const CreatePost = () => {
-    const today = new Date().toISOString().split('T')[0];
-    const [formData, setFormData] = useState({
-        jobTitle: '',
-        Company: '',
-        location: '',
-        jobType: '',
-        Description: '',
-        skills: '',
-        Education: '',
-        Experience: '',
-        deadline: '',
-        position: '',
-        Salary: '',
-        email: '',
-    });
-    localStorage.setItem('isLogged','true');
-    const [message, setMessage] = useState('');
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const response = await fetch('/create_job', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-            const data = await response.json();
-            if (data.message === "Job created successfully") {
+const Details = () => {
+    
+   
+    
+    const location = useLocation();
+    const result = location.state.result;
 
-                window.location.href = '/?param1=true';
-            } else {
-                setMessage(data.message);
-            }
-        } catch (error) {
-            console.error('Error creating job:', error);
+    let company=result.Company;
+    if(company==="")
+        {
+            company="none"
         }
+    
+    const deadlineDate = new Date(result.deadline);
+    const formattedDeadline = deadlineDate.toISOString().split('T')[0];
+    const redirectToGmail = () => {
+        const emailSubject = encodeURIComponent(`Application for ${result.jobTitle}`);
+        const emailBody = encodeURIComponent(`I'm interested in applying for the ${result.jobTitle} position. Please find my resume attached. Thank you.`);
+        window.location.href = `mailto:${result.email}?subject=${emailSubject}&body=${emailBody}`;
     };
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-
 
     return (
         <div className='C-Body'>
@@ -59,45 +31,45 @@ const CreatePost = () => {
                 <nav className="C-navigation">
                     <ul>
                         <li><Link to="/" >Home</Link></li>
-                        <li><Link to="/findjobs">Find-Jobs</Link></li>
+                        <li><Link to="/findjobs" className="active">Find-Jobs</Link></li>
                         <li><Link to="/MyPosts">MyPosts</Link></li>
-                        <li><Link to="/Create_Post" className="active">Post-Jobs</Link></li>
+                        <li><Link to="/Create_Post" >Post-Jobs</Link></li>
                         <li><Link to="/About">About</Link></li>
                     </ul>
                 </nav>
                 <div className="button-container">
-                <Link to="/login" className="blue-button" onClick={localStorage.setItem('isLogged','false')}>Logout</Link>
+                <Link to="/login" className="blue-button">Logout</Link>
                 </div>
 
             </header>
 
             {/* Form  */}
             <div className="form-container">
-                <p className='message'>{message}</p>
-                <form className="job-form" onSubmit={handleSubmit}>
-                    <h2><span className='blue-text'>Create</span> a New Job Post</h2>
+               
+                <form className="job-form" >
+                    <h2><span className='blue-text'>Details</span> of the Job</h2>
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="jobTitle">Job Title<span style={{ color: 'red' }}>*</span>:</label>
-                            <input type="text" id="jobTitle" name="jobTitle" required placeholder='e.g Web Developer' value={formData.Username} onChange={handleChange} />
+                            <input type="text" id="jobTitle" name="jobTitle" readOnly placeholder='e.g Web Developer' value={result.jobTitle}  />
                         </div>
                         <div className="form-group">
                             <label htmlFor="companyName">Company Name:</label>
-                            <input type="text" id="companyName" name="Company" />
+                            <input type="text" id="companyName" readOnly name="Company" value={company}/>
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="jobLocation">Job Location:</label>
-                            <input type="text" id="jobLocation" name="location" required placeholder='e.g Lahore' value={formData.Username} onChange={handleChange} />
+                            <input type="text" id="jobLocation" name="location" readOnly placeholder='e.g Lahore' value={result.location}  />
                         </div>
                         <div className="form-group">
                             <label>Job Type<span style={{ color: 'red' }}>*</span>:</label>
 
-                            <select id="type" name="jobType" required value={formData.Username} onChange={handleChange}>
+                            <select id="type" name="jobType" readOnly value={result.jobType} >
                                 <option value="">Select Job Type</option>
-                                <option value="Full">Full Time</option>
-                                <option value="Part">Part Time</option>
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
                                 <option value="Intern">Intern</option>
                             </select>
 
@@ -106,17 +78,17 @@ const CreatePost = () => {
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="jobDescription">Job Description:</label>
-                            <textarea id="jobDescription" name="Description" rows="4" style={{ width: 'calc(100% - 20px)' }} required value={formData.Username} onChange={handleChange}></textarea>
+                            <textarea id="jobDescription" name="Description" rows="4" style={{ width: 'calc(100% - 20px)' }} readOnly value={result.Description} ></textarea>
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="requiredSkills">Required Skills:</label>
-                            <input type="text" id="requiredSkills" name="skills" required placeholder='e.g PHP,MERN,SEO' value={formData.Username} onChange={handleChange} />
+                            <input type="text" id="requiredSkills" name="skills" readOnly placeholder='e.g PHP,MERN,SEO' value={result.skills}  />
                         </div>
                         <div className="form-group">
                             <label>Education Level<span style={{ color: 'red' }}>*</span>:</label>
-                            <select id="educationLevel" name="Education" required value={formData.Username} onChange={handleChange}>
+                            <select id="educationLevel" name="Education" readOnly value={result.Education} >
                                 <option value="">Select Education Level</option>
                                 <option value="Bachelor">Bachelor</option>
                                 <option value="Master">Master</option>
@@ -128,7 +100,7 @@ const CreatePost = () => {
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="experienceLevel">Experience Level<span style={{ color: 'red' }}>*</span>:</label>
-                            <select id="experienceLevel" name="Experience" required value={formData.Username} onChange={handleChange}>
+                            <select id="experienceLevel" name="Experience" readOnly value={result.Experience} >
                                 <option value="">Select Experience Level</option>
                                 <option value="1 year">1 year</option>
                                 <option value="2 years">2 years</option>
@@ -141,14 +113,16 @@ const CreatePost = () => {
                         
                         <div className="form-group">
                             <label htmlFor="applicationDeadline">Application Deadline<span style={{ color: 'red' }}>*</span>:</label>
-                            <input type="date" id="applicationDeadline" name="deadline" min={today} required value={formData.Username} onChange={handleChange} />
+                            <input type="date" id="applicationDeadline" name="deadline"  readOnly value={formattedDeadline}  />
+
                         </div>
 
                     </div>
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="position">Number of Positons<span style={{ color: 'red' }}>*</span>:</label>
-                            <select id="position" name="position" required value={formData.Username} onChange={handleChange}>
+                            <select id="position" name="position" readOnly value={result.position} >
+                                <option value="">Select No of Positions</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -159,21 +133,21 @@ const CreatePost = () => {
                         </div>
                         <div className="form-group">
                             <label htmlFor="Salary">Salary:</label>
-                            <input type="text" id="Salary" name="Salary" required placeholder='e.g 10000' value={formData.Username} onChange={handleChange} />
+                            <input type="text" id="Salary" name="Salary" readOnly placeholder='e.g 10000' value={result.Salary} />
                         </div>
                         <div className="form-group">
                             <label>Contact Information<span style={{ color: 'red' }}>*</span>:</label>
                             <div className="contact-info">
-                                <input type="email" id="email" name="email" placeholder="Email" required value={formData.Username} onChange={handleChange} />
+                                <input type="email" id="email" name="email" placeholder="Email" readOnly value={result.email} />
                             </div>
                         </div>
 
                     </div>
-                    <button type="submit" className="C-button">Submit</button>
+                    
                 </form>
             </div>
         </div>
     );
 };
 
-export default CreatePost;
+export default Details;

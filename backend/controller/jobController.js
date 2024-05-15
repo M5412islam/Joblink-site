@@ -1,4 +1,5 @@
 const Job = require("../models/jobmodel");
+const User = require("../models/usermodel");
 const express = require("express");
 const router = express.Router();
 router.use(express.json());
@@ -50,8 +51,52 @@ Job.find(searchQuery)
 });
 }
 
+async function getAlldata(req, res) {
+  Job.find({})
+.then(results => {
+    console.log("Search results:", results);
+    res.json(results);
+})
+.catch(err => {
+    console.error("Error executing search query:", err);
+    res.json({message: "No Result"})
+});
+  
+}
+
+async function searchdatabyUsername(req, res) {
+  
+  const Username = req.body.username; 
+  const existingUser = await User.findOne({ Username });
+  console.log(Username);
+  const schemaKeys = Object.keys(Job.schema.paths).filter(key => {
+      const fieldType = Job.schema.paths[key].instance;
+      return fieldType === 'String';
+  });
+
+  const searchConditions = schemaKeys.map(key => ({
+      [key]: { $regex: new RegExp(`.*${existingUser.Email}.*`, 'i') }
+  }));
+
+  const searchQuery = {
+      $or: searchConditions
+  };
+
+  Job.find(searchQuery)
+      .then(results => {
+          console.log("Search results:", results);
+          res.json(results);
+      })
+      .catch(err => {
+          console.error("Error executing search query:", err);
+          res.json({ message: "No Result" });
+      });
+}
+
 module.exports=
 {
   create,
-  search
+  search,
+  getAlldata,
+  searchdatabyUsername
 };

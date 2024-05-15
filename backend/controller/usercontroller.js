@@ -5,9 +5,7 @@ const router = express.Router();
 router.use(express.json());
 async function register(req, res) {
     const { first, last, Username, Email, Password } = req.body;
-    if (!first || !last || !Username || !Email || !Password) {
-      return res.json({ message: "Please provide all required fields" });
-  }
+   
     try {
       const existingUser = await User.findOne({ Username });
       const existingemail = await User.findOne({ Email });

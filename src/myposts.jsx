@@ -2,13 +2,13 @@
 import { default as React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const FindJobs = () => {
+const Myposts = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [message, setMessage] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
-    
     const [searchResults, setSearchResults] = useState([]);
+    const username = localStorage.getItem('username');
     localStorage.setItem('isLogged','true');
     useEffect(() => {
         fetchData();
@@ -16,7 +16,13 @@ const FindJobs = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('/Findjobs');
+                const response = await fetch(`/Myposts`, {
+                method: 'POST', // or 'POST' depending on your server route
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: username })
+            });
             const data = await response.json();
             setSearchResults(data);
             setTotalPages(Math.ceil(data.length / 6));
@@ -24,6 +30,7 @@ const FindJobs = () => {
             console.error('Error fetching data:', error);
         }
     };
+    
 
     const handleSearch = async (event) => {
         event.preventDefault();
@@ -84,14 +91,14 @@ if (searchResults.length >= endIndex) {
                 <nav className="C-navigation">
                     <ul>
                         <li><Link to="/" >Home</Link></li>
-                        <li><Link to="/findjobs" className="active">Find Jobs</Link></li>
-                        <li><Link to="/MyPosts">MyPosts</Link></li>
+                        <li><Link to="/findjobs" >Find Jobs</Link></li>
+                        <li><Link to="/MyPosts" className="active">MyPosts</Link></li>
                         <li><Link to="/Create_Post">Post Jobs</Link></li>
                         <li><Link to="/about">About</Link></li>
                     </ul>
                 </nav>
                 <div className="button-container">
-                <Link to="/" className="blue-button" onClick={localStorage.setItem('isLogged','false')}>Logout</Link>
+                <Link to="/login" className="blue-button"onClick={localStorage.setItem('isLogged','false')}>Logout</Link>
                 </div>
             </header>
 
@@ -176,7 +183,7 @@ if (searchResults.length >= endIndex) {
             <div className="cardLower">
                 <div className="L-buttonContainer">
                     <div className="L-bookmarkCircle">{result.Salary}$/week</div>
-                    <div className="L-buttonShape"><Link to={`/detail/${result}`} state={{ result }}>Details</Link></div> 
+                    <div className="L-buttonShape"><Link to={`/EditPost/${result}`} state={{ result }}>Details</Link></div> 
                 </div>
             </div>
             </div>
@@ -210,7 +217,7 @@ if (searchResults.length >= endIndex) {
             <div className="cardLower">
                 <div className="L-buttonContainer">
                     <div className="L-bookmarkCircle">{result.Salary}$/week</div>
-                    <div className="L-buttonShape"><Link to={`/detail/${result}`} state={{ result }}>Details</Link></div>  
+                    <div className="L-buttonShape"><Link to={`/EditPost/${result}`} state={{ result }}>Details</Link></div>  
                 </div>
             </div>
             </div>
@@ -242,4 +249,4 @@ if (searchResults.length >= endIndex) {
     );
 };
 
-export default FindJobs;
+export default Myposts;

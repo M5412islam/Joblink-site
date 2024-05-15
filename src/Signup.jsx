@@ -6,11 +6,11 @@ const Signup = () => {
   const [formData, setFormData] = useState({
     first: '',
     last: '',
-    username: '', // corrected to lowercase
-    email: '', // corrected to lowercase
-    password: '' // corrected to lowercase
+    Username: '', // corrected to lowercase
+    Email: '', // corrected to lowercase
+    Password: '' // corrected to lowercase
   });
-
+  const [isLogged, setIsLogged] = useState(false);
   const [isSignup, setIsSignup] = useState(true);
   const [message, setMessage] = useState('');
 
@@ -67,15 +67,15 @@ const Signup = () => {
                 </div>
                 <div className="form-field">
                   <label htmlFor="username">Username:</label>
-                  <input type="text" id="username" name='username' value={formData.username} onChange={handleChange} required/>
+                  <input type="text" id="Username" name='Username' value={formData.username} onChange={handleChange} required/>
                 </div>
                 <div className="form-field">
                   <label htmlFor="email">Email:</label>
-                  <input type="email" id="email" name='email' value={formData.email} onChange={handleChange} required/>
+                  <input type="email" id="Email" name='Email' value={formData.email} onChange={handleChange} required/>
                 </div>
                 <div className="form-field">
                   <label htmlFor="password">Password:</label>
-                  <input type="password" id="password" name='password' value={formData.password} onChange={handleChange} required/>
+                  <input type="password" id="Password" name='Password' value={formData.password} onChange={handleChange} required/>
                 </div>
                 <button type="submit" className="blue-button">Sign up</button>
               </div>
@@ -92,7 +92,7 @@ const Signup = () => {
           </div>
         ) : null}
       </form>
-      {!isSignup && <Login/> }
+      {!isSignup && <Login setIsLogged={setIsLogged}/> }
     </div>
   );
 };

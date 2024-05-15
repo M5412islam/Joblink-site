@@ -7,11 +7,11 @@ import softwareEngineerLogo from './Images-Logos/Software Engineer.png';
 import teacherLogo from './Images-Logos/Teacher.png';
 import webDeveloperLogo from './Images-Logos/Web Developer.png';
 
-const Homepage = ({ isLogged })=> {
+const Homepage = ()=> {
   const [showFirstSet, setShowFirstSet] = useState(true);
-  const params = new URLSearchParams(window.location.search);
-  const param1 = params.get('param1');
-  isLogged=param1;
+  
+
+  let isLogged=localStorage.getItem('isLogged');
   const toggleCards = () => {
     setShowFirstSet(!showFirstSet);
   };

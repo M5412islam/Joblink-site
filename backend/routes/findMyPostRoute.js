@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
- const {search,getAlldata} = require("../controller/jobController");
+ const {searchdatabyUsername} = require("../controller/jobController");
 router.use(express.json());
 
+router.post("/",searchdatabyUsername);
 
-
-router.post("/", search);
-router.get("/",getAlldata);
 module.exports = router;

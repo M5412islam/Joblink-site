@@ -2,6 +2,7 @@ import React from 'react';
 import { Link,  } from 'react-router-dom';
 
 const About = () => {
+  localStorage.setItem('isLogged','true');
   return (
     <div className='A-body'>
       <div className="about-content">
@@ -70,7 +71,7 @@ const About = () => {
           </div>
         </div>
         <div className="button-container" style={{marginRight: '30px'}}>
-            <Link to="/login" className="blue-button" >Logout</Link>
+            <Link to="/login" className="blue-button" onClick={localStorage.setItem('isLogged','false')} >Logout</Link>
           </div>
       </header>
     </div>

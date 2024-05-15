@@ -22,8 +22,9 @@ const Login = ({setIsLogged}) => {
       });
       const data = await response.json();
       if (data.message === "Username Found") {
-        setIsLogged(true); // Update isLogged state
-        window.location.href = '/?param1=true';
+        localStorage.setItem('username',formData.Username);
+        localStorage.setItem('isLogged','true');
+        window.location.href = '/';
       } else {
         setMessage('Incorrect Username or password');
       }

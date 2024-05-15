@@ -1,0 +1,514 @@
+
+/* Findjobs.css */
+.F-body {
+    background-color: #f0f0f0;
+    margin: 0; 
+    padding: 0; 
+    height: 100vh;
+}
+.F-flex-container {
+    display: flex;
+    width: 100%;
+     
+}
+
+.F-left-part {
+    width: 15%;
+    background-color: #f0f0f0; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    /* border-radius: 1%; */
+    
+}
+
+.F-right-part {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    padding-bottom: 9px;
+}
+
+
+.F-middle {
+    flex: 8.4; 
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+.F-card {
+    background-color: black;
+    text-align: center;
+    padding: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    border-radius: 20px;
+}
+
+.F-heading {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0; 
+}
+
+.F-button {
+    display: block;
+    width: 50%;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px;
+    padding-top: 10px;
+    margin-left:30px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.F-filters {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.F-filters label {
+    font-size: 10px; 
+}
+
+.F-filters h4 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.F-filters h6 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+
+
+.F-upper {
+    flex: 0.8; 
+    align-items: center; 
+    margin-bottom: -10px; 
+    padding-top: -30px;
+    padding-left: 30px;
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.U-heading-container {
+    display: flex;
+    align-items: center;
+}
+
+.U-search-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; 
+    
+}
+
+.U-search-field {
+    width: 400px; 
+    height: 30px;
+}
+
+.U-search-button {
+    padding: 5px 10px; 
+    background-color: #007bff; 
+    color: rgb(251, 248, 248);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 36px;
+}
+
+.U-search-button:hover {
+    background-color: #0056b3; 
+}
+
+/* FindJobs.css */
+
+.M-upper {
+    flex: 1; 
+    display: flex;
+    justify-content: space-between;
+    padding: 1px;
+    
+}
+.M-lower {
+    flex: 1; 
+    display: flex;
+    justify-content: space-between;
+    padding: 1px;
+    padding-left: 10px;
+}
+
+
+
+.U-flex {
+    flex: 1; 
+    background-color: #f0f0f0; 
+    color: rgb(250, 246, 246);
+    padding: 10px; 
+    margin-left:  30px;
+    margin-right: 30px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 200px;
+}
+
+.cardUpper {
+    flex: 9; 
+    background-color:#f0f0f0;
+    border-radius: 10px;
+    padding-bottom: 10px;
+
+}
+
+.cardLower {
+    flex: 1; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color:black;
+}
+
+
+.FullCard
+{
+    background-color: black;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+}
+
+.buttonShape {
+    width: 80px; 
+    height: 30px; 
+    background-color: #f0f0f0;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 12px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px; 
+    margin-left: 10px; 
+    margin-top: 5px; 
+}
+
+.bookmarkCircle {
+    width: 25px; 
+    height: 25px; 
+    background-color: black;
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px; 
+    margin-left: auto; 
+    margin-top: 5px; 
+    margin-right: 10px;
+    cursor: pointer;
+}
+.bookmarkCircle:hover {
+    transform: scale(1.2); 
+    color: #007bff;
+}
+
+.Cards-heading {
+    text-align: center;
+    color: #007bff;
+    display: block;
+    margin-top: 1px;
+    margin-bottom: 0px;
+    padding: 2px; 
+    max-height: 40px;
+    min-height: 30px;
+}
+
+.U-buttonShape {
+    width: 100px; 
+    height: 30px;
+    background-color: #f0f0f0; 
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px; 
+    margin-left: 5px; 
+    margin-top: 4px; 
+}
+
+
+.L-buttonContainer {
+    display: flex;
+    align-items: center;
+}
+
+.L-buttonShape {
+    width: 70px; 
+    height: 30px; 
+    background-color: #007bff; 
+    color: white;
+    border-radius: 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px; 
+    margin-left: 80px; 
+    margin-top: 4px;
+}
+
+.L-bookmarkCircle {
+    color: #007bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px; 
+    margin-left: 10px; 
+    margin-top: 2px; 
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+
+
+.F-lower {
+    flex: 0.8; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 13px 0; 
+    margin: 0; 
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    
+    cursor: pointer;
+    margin-top: 0;
+}
+
+.pagination button:hover {
+    background-color: #2d567e;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+
+/* Responsiveness */
+
+
+@media screen and (min-width:1021px) and ( max-width: 1220px) {
+
+    .F-middle {
+        flex: 8.4; 
+        margin: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .M-upper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1px;
+        
+    }
+    .M-lower {
+        flex: 1; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1px;
+        
+    }
+    
+    .U-flex {
+        flex: 1; 
+        background-color: black; 
+        color: white;
+        padding: 10px; 
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 2px;
+        margin-left:  30px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .F-left-part {
+        width: 15%;
+        background-color: #f0f0f0; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: start; 
+        align-items: center;
+        border-radius: 10%;
+    }
+    
+}
+
+@media only screen and (min-width: 871px) and (max-width: 1020px)
+{
+    .F-middle {
+        flex-direction: column;
+    }
+    .FullCard{
+        margin-bottom: 15px;
+    }
+    
+    .M-upper {
+        flex-direction: column;
+        justify-content: space-between;
+
+    }
+    .M-lower {
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #f0f0f0;
+        
+    }
+    .U-flex {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    .F-left-part {
+        justify-content: start; 
+       
+    }
+    .F-upper {
+        padding-top: 25px;
+        flex-direction: column-reverse;
+        
+    }
+
+    .F-left-part {
+        width: 20%;
+        justify-content: start; 
+       
+    }
+    
+    .F-right-part {
+        width: 80%;
+    }
+    
+
+}
+
+@media only screen and (max-width: 870px) 
+{
+    .F-middle {
+        flex-direction: column;
+        
+    }
+    .M-upper {
+        flex-direction: column;
+        
+        
+    }
+    .M-lower {
+        flex-direction: column;
+       
+    }
+    .U-flex {
+        margin-bottom: 30px;
+    }
+    .F-left-part {
+        justify-content: start; 
+        margin-top: 80px;
+       
+    }
+    .F-upper {
+        padding-top: 25px;
+        flex-direction: column-reverse;
+        
+    }
+
+    .F-left-part {
+        width: 30%;
+        justify-content: start; 
+       
+    }
+    
+    .F-right-part {
+        width: 70%;
+    }
+    .U-flex{
+        flex-direction: column;
+    }
+    
+    .U-search-field {
+        width: 250px; 
+        height: 30px;
+    }
+    
+    .U-search-button {
+        padding: 5px 10px; 
+        background-color: #007bff; 
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        height: 36px;
+    }
+
+    .FullCard{
+        margin-bottom: 15px;
+    }
+
+}
+
+
+@media only screen and (max-width: 670px) 
+{
+    .L-buttonShape{
+        
+        margin-left: 1px;
+    }
+}
