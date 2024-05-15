@@ -1,13 +1,29 @@
 // FindJobs.jsx
-import { default as React, useState } from 'react';
+import { default as React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const FindJobs = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = 5; 
+    const [totalPages, setTotalPages] = useState(1);
     const [message, setMessage] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
+    
     const [searchResults, setSearchResults] = useState([]);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch('/Findjobs');
+            const data = await response.json();
+            setSearchResults(data);
+            setTotalPages(Math.ceil(data.length / 6));
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
     const handleSearch = async (event) => {
         event.preventDefault();
@@ -17,13 +33,17 @@ const FindJobs = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ searchTerm: searchQuery })
+                body: JSON.stringify({
+                     searchTerm: searchQuery,
+                     
+                     })
             });
             const data = await response.json();
             if (data.message === "No Result") {
                 setMessage(data.message);
             } else {
                 setSearchResults(data);
+                setTotalPages(Math.ceil(data.length / 6));
             }
         } catch (error) {
             console.error('Error creating job:', error);
@@ -44,6 +64,17 @@ const FindJobs = () => {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
+    const startIndex = (currentPage - 1) * 6;
+    const endIndex = startIndex + 6;
+    
+    let upperResults = [];
+let lowerResults = [];
+if (searchResults.length >= endIndex) {
+    upperResults = searchResults.slice(startIndex, startIndex + 3);
+    lowerResults = searchResults.slice(startIndex + 3, endIndex);
+} else {
+    upperResults = searchResults.slice(startIndex);
+}
     return (
         <div className='F-body'>
             <header className="C-header" style={{paddingBottom :0 ,paddingTop:1}}>
@@ -75,27 +106,29 @@ const FindJobs = () => {
                         <h2 className="F-heading">Filters</h2>
                         <div>
                             <h4>Job Type</h4>
-                            <input type="radio" id="fullTime" name="jobType" value="fullTime" />
+                            <input type="radio" id="fullTime" name="jobType"  value="Full Time" />
                             <label htmlFor="fullTime">Full Time</label><br />
-                            <input type="radio" id="partTime" name="jobType" value="partTime" />
+                            <input type="radio" id="partTime" name="jobType"  value="Part Time" />
                             <label htmlFor="partTime">Part Time</label><br />
-                            <input type="radio" id="contract" name="jobType" value="contract" />
-                            <label htmlFor="contract">Contract</label><br />
+                            <input type="radio" id="contract" name="jobType"  value="Intern" />
+                            <label htmlFor="contract">Internship</label><br />
                         </div>
                         <div>
                             <h4>Education Level</h4>
-                            <input type="radio" id="highSchool" name="educationLevel" value="highSchool" />
-                            <label htmlFor="highSchool">High School</label><br />
-                            <input type="radio" id="college" name="educationLevel" value="college" />
-                            <label htmlFor="college">College</label><br />
+                            <input type="radio" id="Bachelor" name="educationLevel" value="Bachelor"  />
+                            <label htmlFor="Bachelor">Bachelor</label><br />
+                            <input type="radio" id="Master" name="educationLevel" value="Master"  />
+                            <label htmlFor="Master">Master</label><br />
+                            <input type="radio" id="Higher" name="educationLevel" value="Higher" />
+                            <label htmlFor="Higher">Higher</label><br />
                         </div>
                         <div>
                             <h4>Job Title</h4>
-                            <input type="radio" id="engineer" name="jobTitle" value="engineer" />
+                            <input type="radio" id="engineer" name="jobTitle" value="engineer"  />
                             <label htmlFor="engineer">Engineer</label><br />
-                            <input type="radio" id="developer" name="jobTitle" value="developer" />
+                            <input type="radio" id="developer" name="jobTitle" value="developer"  />
                             <label htmlFor="developer">Developer</label><br />
-                            <input type="radio" id="designer" name="jobTitle" value="designer" />
+                            <input type="radio" id="designer" name="jobTitle" value="designer"  />
                             <label htmlFor="designer">Designer</label><br />
                         </div>
                     </div>
@@ -113,7 +146,7 @@ const FindJobs = () => {
                     placeholder="Search..."
                     className="U-search-field"
                 />
-                <button onClick={handleSearch} className="U-search-button">Search</button>
+                <button onChange={handleInputChange} onClick={handleSearch} className="U-search-button">Search</button>
                 <p className='message'>{message}</p>
             </div>
                 </div>
@@ -122,7 +155,7 @@ const FindJobs = () => {
     <div className="M-upper">
         <div className="M-upper">
             <div className="U-flex">
-                {searchResults.slice(0, 3).map(result => (
+                {upperResults.slice(0, 3).map(result => (
                     <div key={result._id}>
         <div className='FullCard'>
             <div className="cardUpper">
@@ -137,17 +170,17 @@ const FindJobs = () => {
                 </div>
                 <div className="buttonRow" style={{marginTop:1}}>
                     <div className="U-buttonShape">{result.Experience}</div>
-                    <div className="U-buttonShape">{result.email}</div>
+                    <div className="U-buttonShape">{result.location}</div>
                 </div>
             </div>
             <div className="cardLower">
                 <div className="L-buttonContainer">
-                    <div className="L-bookmarkCircle">{result.Salary}/week</div>
-                    <div className="L-buttonShape">Details</div>   
+                    <div className="L-bookmarkCircle">{result.Salary}$/week</div>
+                    <div className="L-buttonShape"><Link to={`/detail/${result}`} state={{ result }}>Details</Link></div> 
                 </div>
             </div>
             </div>
-        </div>
+            </div>
     ))}
 </div>
     
@@ -156,7 +189,7 @@ const FindJobs = () => {
 <div className="M-lower">
         <div className="M-upper">
             <div className="U-flex">
-                {searchResults.slice(3).map(result => (
+                {lowerResults.slice(0,3).map(result => (
                     <div key={result._id}>
                         <div className='FullCard'>
                         <div className="cardUpper">
@@ -171,17 +204,17 @@ const FindJobs = () => {
                 </div>
                 <div className="buttonRow" style={{marginTop:1}}>
                     <div className="U-buttonShape">{result.Experience}</div>
-                    <div className="U-buttonShape">{result.email}</div>
+                    <div className="U-buttonShape">{result.location}</div>
                 </div>
             </div>
             <div className="cardLower">
                 <div className="L-buttonContainer">
-                    <div className="L-bookmarkCircle">{result.Salary}/week</div>
-                    <div className="L-buttonShape">Details</div>   
+                    <div className="L-bookmarkCircle">{result.Salary}$/week</div>
+                    <div className="L-buttonShape"><Link to={`/detail/${result}`} state={{ result }}>Details</Link></div>  
                 </div>
             </div>
             </div>
-        </div>
+            </div>
     ))}
      </div>
 
@@ -189,20 +222,20 @@ const FindJobs = () => {
  </div>
                     </div>
                     <div className="F-lower">
-                        <ul className="pagination">
-                            <li>
-                                <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
-                            </li>
-                            {[...Array(totalPages).keys()].map((pageNumber) => (
-                                <li key={pageNumber}>
-                                    <button onClick={() => handlePageChange(pageNumber + 1)}>{pageNumber + 1}</button>
-                                </li>
-                            ))}
-                            <li>
-                                <button onClick={handleNextPage} disabled={currentPage === totalPages}>Next</button>
-                            </li>
-                        </ul>
-                    </div>
+                <ul className="pagination">
+                    <li>
+                        <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+                    </li>
+                    {[...Array(totalPages).keys()].map((pageNumber) => (
+                        <li key={pageNumber}>
+                            <button onClick={() => handlePageChange(pageNumber + 1)}>{pageNumber + 1}</button>
+                        </li>
+                    ))}
+                    <li>
+                        <button onClick={handleNextPage} disabled={currentPage === totalPages}>Next</button>
+                    </li>
+                </ul>
+            </div>
                 </div>
             </div>
         </div>
