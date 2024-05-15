@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CreatePost = () => {
     const today = new Date().toISOString().split('T')[0];
@@ -14,10 +14,10 @@ const CreatePost = () => {
         Experience: '',
         deadline: '',
         position: '',
+        Salary: '',
         email: '',
     });
-    let { isLogged } = useParams();
-    console.log(isLogged);
+    localStorage.setItem('isLogged','true');
     const [message, setMessage] = useState('');
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -66,7 +66,7 @@ const CreatePost = () => {
                     </ul>
                 </nav>
                 <div className="button-container">
-                <Link to="/login" className="blue-button" onClick={isLogged=false}>Logout</Link>
+                <Link to="/login" className="blue-button" onClick={localStorage.setItem('isLogged','false')}>Logout</Link>
                 </div>
 
             </header>
@@ -138,6 +138,7 @@ const CreatePost = () => {
                                 <option value="Above 5 years">Above 5 years</option>
                             </select>
                         </div>
+                        
                         <div className="form-group">
                             <label htmlFor="applicationDeadline">Application Deadline<span style={{ color: 'red' }}>*</span>:</label>
                             <input type="date" id="applicationDeadline" name="deadline" min={today} required value={formData.Username} onChange={handleChange} />
@@ -155,6 +156,10 @@ const CreatePost = () => {
                                 <option value="5">5</option>
                                 <option value="5+">5+</option>
                             </select>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="Salary">Salary:</label>
+                            <input type="text" id="Salary" name="Salary" required placeholder='e.g 10000' value={formData.Username} onChange={handleChange} />
                         </div>
                         <div className="form-group">
                             <label>Contact Information<span style={{ color: 'red' }}>*</span>:</label>

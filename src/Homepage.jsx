@@ -7,11 +7,11 @@ import softwareEngineerLogo from './Images-Logos/Software Engineer.png';
 import teacherLogo from './Images-Logos/Teacher.png';
 import webDeveloperLogo from './Images-Logos/Web Developer.png';
 
-const Homepage = ({ isLogged })=> {
+const Homepage = ()=> {
   const [showFirstSet, setShowFirstSet] = useState(true);
-  const params = new URLSearchParams(window.location.search);
-  const param1 = params.get('param1');
-  isLogged=param1;
+  
+
+  let isLogged=localStorage.getItem('isLogged');
   const toggleCards = () => {
     setShowFirstSet(!showFirstSet);
   };
@@ -39,9 +39,9 @@ console.log("logged"+isLogged);
         {isLogged ? (
           <ul>
             <li><Link to="/" className="active">Home</Link></li>
-            <li><Link to="/findjobs">Find-Jobs</Link></li>
+            <li><Link to="/FindJobs">Find-Jobs</Link></li>
             <li><Link to="/MyPosts">MyPosts</Link></li>
-            <li><Link to={`/Create_Post/${isLogged}`}>Post-Jobs</Link></li>
+            <li><Link to={`/Create_Post`}>Post-Jobs</Link></li>
             <li><Link to="/About">About</Link></li>
           </ul>
           ) : (
@@ -52,9 +52,9 @@ console.log("logged"+isLogged);
             <li><Link to="/login">Post-Jobs</Link></li>
             <li><Link to="/login">About</Link></li>
           </ul>
-          )};
+          )}
         </nav>
-        <div className="button-container">
+      
       
         {isLogged ? (
           <div className="button-container">
@@ -63,12 +63,13 @@ console.log("logged"+isLogged);
           </div>
         ) : (
           <div className="button-container">
+    
           <Link to="/Signup" className="blue-button">Sign up</Link>
           <Link to="/login" className="blue-button">Log in</Link>
           </div>
         )}
 
-        </div>
+        
       </header>
 
       <div className="main-content">
@@ -81,7 +82,7 @@ console.log("logged"+isLogged);
           </p>
           <div className="search-container">
             <input type="text" placeholder="Search for jobs..." />
-            <button className="blue-button">Search</button>
+            <button className="button">Search</button>
           </div>
         </div>
 
@@ -98,7 +99,7 @@ console.log("logged"+isLogged);
           <div className="card-container">
           {showFirstSet ? (
   firstSetData.map((card) => (
-    <div key={card.id} className="card" onClick={() => handleCardClick(card)}>
+    <div key={card.id} className="card">
       <img src={card.logo} alt={card.title} />
       <h1>{card.title}</h1>
       <p>{card.description}</p>
@@ -106,7 +107,7 @@ console.log("logged"+isLogged);
   ))
 ) : (
   secondSetData.map((card) => (
-    <div key={card.id} className="card" onClick={() => handleCardClick(card)}>
+    <div key={card.id} className="card" >
       <img src={card.logo} alt={card.title} />
       <h1>{card.title}</h1>
       <p>{card.description}</p>
